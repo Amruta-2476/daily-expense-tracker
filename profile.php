@@ -116,7 +116,7 @@ if (isset($_POST['but_upload'])) {
                                 <div class="col">
                                     <div class="form-group">
 
-                                        <div class="col-md">
+                                        <div class="">
                                             <label for="first_name">
                                                 First name
                                             </label>

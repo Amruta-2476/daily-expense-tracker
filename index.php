@@ -1,5 +1,38 @@
 <?php
   include("session.php");
+  function getDashboardExpense($type) {
+    global $con, $userid;
+    $today = date('Y-m-d');
+    $sub_sql = "";
+    if ($type == 'today') {
+        $sub_sql = " and expensedate='$today'";
+        $from = $today;
+        $to = $today;
+    } elseif ($type == 'yesterday') {
+        $yesterday = date('Y-m-d', strtotime('yesterday'));
+        $sub_sql = " and expensedate='$yesterday'";
+        $from = $yesterday;
+        $to = $yesterday;
+    } elseif ($type == 'week' || $type == 'month' || $type == 'year') {
+        $from = date('Y-m-d', strtotime("-1 $type"));
+        $sub_sql = " and expensedate between '$from' and '$today'";
+        $to = $today;
+    } else {
+        $sub_sql = "";
+        $from = '';
+        $to = '';
+    }
+    $res = mysqli_query($con, "select sum(expense) as expense from expenses where user_id='$userid' $sub_sql");
+    $row = mysqli_fetch_assoc($res);
+    $p = 0;
+    $link = "";
+    if ($row['expense'] > 0) {
+        $p = $row['expense'];
+        $link = "&nbsp;<a style='font-size: 15px; color: black; font-weight:bold' href='dashboard_report.php?from=".$from."&to=".$to."' target='_blank'>Details</a>";
+    }
+    return $p . $link;	
+  }
+
   $exp_category_dc = mysqli_query($con, "SELECT expensecategory FROM expenses WHERE user_id = '$userid' GROUP BY expensecategory");
   $exp_amt_dc = mysqli_query($con, "SELECT SUM(expense) FROM expenses WHERE user_id = '$userid' GROUP BY expensecategory");
 
@@ -71,36 +104,90 @@
           <span data-feather="menu"></span>
         </button>
       </nav>
-
+      
       <div class="container-fluid">
         <h3 class="mt-4">Dashboard</h3>
-        <div class="row">
-          <div class="col-md">
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col text-center">
-                    <a href="add_expense.php"><img src="icon/addex.png" width="57px" />
-                      <p>Add Expenses</p>
-                    </a>
-                  </div>
-                  <div class="col text-center">
-                    <a href="manage_expense.php"><img src="icon/maex.png" width="57px" />
-                      <p>Manage Expenses</p>
-                    </a>
-                  </div>
-                  <div class="col text-center">
-                    <a href="profile.php"><img src="icon/prof.png" width="57px" />
-                      <p>User Profile</p>
-                    </a>
-                  </div>
+        <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row m-t-25">
+                            <div class="report-card">
+                                <div class="overview-item overview-item--c1">
+                                    <div class="overview__inner">
+                                        <div class="overview-box clearfix">
+                                            <div class="text">
+                                                <h2><?php echo getDashboardExpense('today')?></h2>
+                                                <span>Today's Expense</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="report-card">
+                                <div class="overview-item overview-item--c1">
+                                    <div class="overview__inner">
+                                        <div class="overview-box clearfix">
+                                            <div class="text">
+                                                <h2><?php echo getDashboardExpense('yesterday')?></h2>
+                                                <span>Yesterday's Expense</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="report-card">
+                                <div class="overview-item overview-item--c1">
+                                    <div class="overview__inner">
+                                        <div class="overview-box clearfix">
+                                            <div class="text">
+                                                <h2><?php echo getDashboardExpense('week')?></h2>
+                                                <span>This Week Expense</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="report-card">
+                                <div class="overview-item overview-item--c1">
+                                    <div class="overview__inner">
+                                        <div class="overview-box clearfix">
+                                            <div class="text">
+                                                <h2><?php echo getDashboardExpense('month')?></h2>
+                                                <span>This Month Expense</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="report-card">
+                                <div class="overview-item overview-item--c1">
+                                    <div class="overview__inner">
+                                        <div class="overview-box clearfix">
+                                            <div class="text">
+                                                <h2><?php echo getDashboardExpense('year')?></h2>
+                                                <span>This Year Expense</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="report-card">
+                                <div class="overview-item overview-item--c1">
+                                    <div class="overview__inner">
+                                        <div class="overview-box clearfix">
+                                            <div class="text">
+                                                <h2><?php echo getDashboardExpense('total')?></h2>
+                                                <span>Total Expense</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+					   </div>
+					</div>
                 </div>
-              </div>
             </div>
-          </div>
-        </div>
 
-        <h3 class="mt-4">Category-wise Report</h3>
+        <h3 class="mt-4 category_report_margin">Category-wise Report</h3>
           <div class="col-md">
             <div class="card">
               <div class="card-header">
