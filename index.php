@@ -70,21 +70,6 @@
         <button class="toggler" type="button" id="menu-toggle" aria-expanded="false">
           <span data-feather="menu"></span>
         </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img class="img img-fluid rounded-circle" src="<?php echo $userprofile ?>" width="25">
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="profile.php">Your Profile</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="logout.php">Logout</a>
-              </div>
-            </li>
-          </ul>
-        </div>
       </nav>
 
       <div class="container-fluid">
@@ -115,31 +100,17 @@
           </div>
         </div>
 
-        <h3 class="mt-4">Full-Expense Report</h3>
-        <div class="row">
-          <div class="col-md">
-            <div class="card">
-              <div class="card-header">
-                <h5 class="card-title text-center">Yearly Expenses</h5>
-              </div>
-              <div class="card-body">
-                <canvas id="expense_line" height="150"></canvas>
-              </div>
-            </div>
-          </div>
+        <h3 class="mt-4">Category-wise Report</h3>
           <div class="col-md">
             <div class="card">
               <div class="card-header">
                 <h5 class="card-title text-center">Expense Category</h5>
               </div>
               <div class="card-body">
-                <canvas id="expense_category_pie" height="150"></canvas>
+                <canvas id="expense_category_pie" height="130"></canvas>
               </div>
             </div>
           </div>
-        </div>
-
-
       </div>
     </div>
     <!-- /#page-content-wrapper -->
@@ -176,15 +147,14 @@
                   } ?>],
           backgroundColor: [
             '#6f42c1',
-            '#dc3545',
-            '#28a745',
-            '#007bff',
-            '#ffc107',
-            '#20c997',
-            '#17a2b8',
-            '#fd7e14',
-            '#e83e8c',
-            '#6610f2'
+            '#fce053',
+            '#eb2d8f',
+            '#38d655',
+            '#fc9453', 
+            '#5399fc',
+            'grey',
+            '#fcc5fb',
+            '#851919',
           ],
           borderWidth: 1
         }]
