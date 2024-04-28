@@ -112,7 +112,7 @@
         <h3 class="mt-4">Dashboard</h3>
         <div class="section__content section__content--p30">
                     <div class="container-fluid">
-                        <div class="row m-t-25">
+                        <div class="row m-t-25 justify-content-center">
                             <div class="report-card">
                                 <div class="overview-item overview-item--c1">
                                     <div class="overview__inner">
@@ -185,24 +185,60 @@
                                     </div>
                                 </div>
                             </div>
-					   </div>
-					</div>
-                </div>
-            </div>
-
-        <h3 class="mt-4 category_report_margin">Category-wise Report</h3>
-          <div class="col-md">
-            <div class="card">
-              <div class="card-header">
-                <h5 class="card-title text-center">Expense Category</h5>
-              </div>
-              <div class="card-body">
-                <canvas id="expense_category_pie" height="130"></canvas>
-              </div>
-            </div>
+					              </div>
+					          </div>
           </div>
-      </div>
+
+         <!-- User input for budget/income -->
+          <!-- <div class="container-fluid">
+              <div class="row justify-content-center">
+                  <div class="col-md-6">
+                      <div class="card">
+                          <div class="card-header">
+                              <h5 class="card-title">Enter Your Budget/Income</h5>
+                          </div>
+                          <div class="card-body">
+                              <form method="post">
+                                  <div class="form-group">
+                                      <input type="text" class="form-control" id="budget" name="budget" placeholder="Enter your budget or income">
+                                  </div>
+                                  <button type="submit" class="btn btn-primary">Submit</button>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div> -->
+
+        <div class="container-fluid">
+        <div class="row justify-content-center">
+            <!-- Expense by Month graph -->
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Expense by Month</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="expense_line" height="130"></canvas>
+                    </div>
+                </div>
+        </div>
+
+            <!-- Expense Category graph -->
+        <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title text-center">Expense Category</h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="expense_category_pie" height="130"></canvas>
+                    </div>
+                </div>
+        </div>
     </div>
+  </div>
+
+        
     <!-- /#page-content-wrapper -->
 
   </div>
