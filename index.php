@@ -17,7 +17,8 @@
         $from = date('Y-m-d', strtotime("-1 $type"));
         $sub_sql = " and expensedate between '$from' and '$today'";
         $to = $today;
-    } else {
+    }
+     else {
         $sub_sql = "";
         $from = '';
         $to = '';
@@ -28,7 +29,9 @@
     $link = "";
     if ($row['expense'] > 0) {
         $p = $row['expense'];
-        $link = "&nbsp;<a style='font-size: 15px; color: black; font-weight:bold' href='dashboard_report.php?from=".$from."&to=".$to."' target='_blank'>Details</a>";
+        if($type != 'total'){
+          $link = "&nbsp;<a style='font-size: 17px; color: #f5f2f0; text-decoration:underline; font-weight:bold' href='dashboard_report.php?from=".$from."&to=".$to."' target='_blank'>Details</a>";
+        }
     }
     return $p . $link;	
   }

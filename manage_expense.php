@@ -77,7 +77,7 @@ $exp_fetched = mysqli_query($con, "SELECT * FROM expenses WHERE user_id = '$user
                             <?php $count=1; while ($row = mysqli_fetch_array($exp_fetched)) { ?>
                                 <tr>
                                     <td><?php echo $count;?></td>
-                                    <td>$<?php echo $row['expensedate']; ?></td>
+                                    <td><?php echo $row['expensedate']; ?></td>
                                     <td><?php echo '$'.$row['expense']; ?></td>
                                     <td><?php echo $row['expensecategory']; ?></td>
                                     <td class="text-center">
