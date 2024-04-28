@@ -121,16 +121,6 @@ if (isset($_POST['but_upload'])) {
                             <div class="text-center mt-3">
                                 <img src="<?php echo $userprofile; ?>" class="text-center img img-fluid rounded-circle avatar" width="120" alt="Profile Picture">
                             </div>
-                            <div class="input-group col-md mb-3 mt-3">
-                                <div class="custom-file">
-                                    <input type="file" name='file' class="custom-file-input" id="profilepic" aria-describedby="profilepicinput">
-                                    <label class="custom-file-label" for="profilepic">Change Photo</label>
-                                </div>
-                                <div class="input-group-append">
-                                    <button class="btn btn-secondary" type="submit" name='but_upload' id="profilepicinput">Upload Picture</button>
-                                </div>
-                            </div>
-
 
                         </form>
 
