@@ -123,7 +123,6 @@ if (isset($_GET['delete'])) {
                 <h5><?php echo $username ?></h5>
                 <p><?php echo $useremail ?></p>
             </div>
-            <div class="sidebar-heading">Management</div>
             <div class="list-group list-group-flush">
                 <a href="index.php" class="list-group-item list-group-item-action sidebar-active"><span data-feather="home"></span> Dashboard</a>
                 <a href="add_expense.php" class="list-group-item list-group-item-action "><span data-feather="plus-square"></span> Add Expenses</a>
