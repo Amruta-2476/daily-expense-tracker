@@ -10,10 +10,8 @@ if (isset($_REQUEST['firstname'])) {
     $email = stripslashes($_REQUEST['email']);
     $email = mysqli_real_escape_string($con, $email);
 
-
     $password = stripslashes($_REQUEST['password']);
     $password = mysqli_real_escape_string($con, $password);
-
 
     $trn_date = date("Y-m-d H:i:s");
 
@@ -49,102 +47,58 @@ if (isset($_REQUEST['firstname'])) {
     }
 
     .form-control {
-      height: 40px;
-      box-shadow: none;
+      height: 45px;
+      border-radius: 25px;
       color: #969fa4;
+      border: 1px solid #ddd;
     }
 
     .form-control:focus {
       border-color: #5cb85c;
     }
 
-    .form-control,
-    .btn {
-      border-radius: 3px;
-    }
-
     .signup-form {
-      width: 450px;
-      margin: 0 auto;
-      padding: 30px 0;
-      font-size: 15px;
+      width: 500px;
+      margin: 50px auto;
+      padding: 30px;
+      background: #f3f3f3;
+      border-radius: 10px;
+      box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.4);
     }
 
     .signup-form h2 {
-      color: #636363;
-      margin: 0 0 15px;
-      position: relative;
+      margin-bottom: 20px;
+      font-size: 33px;
       text-align: center;
-    }
-
-    .signup-form h2:before,
-    .signup-form h2:after {
-      content: "";
-      height: 2px;
-      width: 30%;
-      background: #d4d4d4;
-      position: absolute;
-      top: 50%;
-      z-index: 2;
-    }
-
-    .signup-form h2:before {
-      left: 0;
-    }
-
-    .signup-form h2:after {
-      right: 0;
-    }
-
-    .signup-form .hint-text {
-      color: #999;
-      margin-bottom: 30px;
-      text-align: center;
-    }
-
-    .signup-form form {
-      color: #999;
-      border-radius: 3px;
-      margin-bottom: 15px;
-      background: #fff;
-      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-      padding: 30px;
-      border: 1px solid #ddd;
     }
 
     .signup-form .form-group {
       margin-bottom: 20px;
     }
 
-    .signup-form input[type="checkbox"] {
+    .signup-form .form-check-label input[type="checkbox"] {
       margin-top: 3px;
     }
 
     .signup-form .btn {
-      font-size: 16px;
+      font-size: 18px;
       font-weight: bold;
       min-width: 140px;
-      outline: none !important;
+      border-radius: 25px;
+      background-color: #25c4a7;
+      border: none;
     }
 
-    .signup-form .row div:first-child {
-      padding-right: 10px;
+    .signup-form .btn:hover {
+      background-color: #1d9b7f;
     }
 
-    .signup-form .row div:last-child {
-      padding-left: 10px;
-    }
-
-    .signup-form a:hover {
-      text-decoration: none;
-    }
-
-    .signup-form form a {
+    .signup-form a {
       color: #5cb85c;
       text-decoration: none;
     }
 
-    .signup-form form a:hover {
+    .signup-form a:hover {
       text-decoration: underline;
     }
   </style>
@@ -153,12 +107,13 @@ if (isset($_REQUEST['firstname'])) {
 <body>
   <div class="signup-form">
     <form action="" method="POST" autocomplete="off">
+    <h2 style="color: rgb(37, 196, 167); font-size:33px;">ExpenseWise</h2>
       <h2>Register</h2>
       <div class="form-group">
-        <div class="row">
-          <div class="col"><input type="text" class="form-control" name="firstname" placeholder="First Name" required="required"></div>
-          <div class="col"><input type="text" class="form-control" name="lastname" placeholder="Last Name" required="required"></div>
-        </div>
+        <input type="text" class="form-control" name="firstname" placeholder="First Name" required="required">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" name="lastname" placeholder="Last Name" required="required">
       </div>
       <div class="form-group">
         <input type="email" class="form-control" name="email" placeholder="Email" required="required">
@@ -170,10 +125,7 @@ if (isset($_REQUEST['firstname'])) {
         <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
       </div>
       <div class="form-group">
-        <label class="form-check-label"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> &amp; <a href="#">Privacy Policy</a></label>
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-danger btn-lg btn-block" style="border-radius:0%;">Register</button>
+        <button type="submit" class="btn btn-success btn-block">Register</button>
       </div>
     </form>
     <div class="text-center">Already have an account? <a class="text-success" href="login.php">Login Here</a></div>
@@ -182,8 +134,6 @@ if (isset($_REQUEST['firstname'])) {
 <!-- Bootstrap core JavaScript -->
 <script src="js/jquery.slim.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<!-- Croppie -->
-<script src="js/profile-picture.js"></script>
 <!-- Menu Toggle Script -->
 <script>
   $("#menu-toggle").click(function(e) {

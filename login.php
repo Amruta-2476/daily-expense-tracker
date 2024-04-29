@@ -36,48 +36,29 @@ if (isset($_POST['email'])) {
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <style>
     .login-form {
-      width: 340px;
+      width: 500px;
       margin: 50px auto;
-      font-size: 15px;
+      font-size: 20px;
     }
 
     .login-form form {
       margin-bottom: 15px;
-      background: #fff;
-      box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+      background: #f3f3f3;
       padding: 30px;
-      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 4px 4px 4px rgba(0, 0.4, 0.4, 0.4);
     }
 
     .login-form h2 {
-      color: #636363;
-      margin: 0 0 15px;
-      position: relative;
+      color: #333;
+      margin: 0 0 20px;
       text-align: center;
     }
 
-    .login-form h2:before,
-    .login-form h2:after {
-      content: "";
-      height: 2px;
-      width: 30%;
-      background: #d4d4d4;
-      position: absolute;
-      top: 50%;
-      z-index: 2;
-    }
-
-    .login-form h2:before {
-      left: 0;
-    }
-
-    .login-form h2:after {
-      right: 0;
-    }
-
     .login-form .hint-text {
-      color: #999;
+      color: black;
       margin-bottom: 30px;
+      font-size: 25px;
       text-align: center;
     }
 
@@ -85,15 +66,22 @@ if (isset($_POST['email'])) {
       text-decoration: none;
     }
 
-    .form-control,
-    .btn {
-      min-height: 38px;
-      border-radius: 2px;
+    .form-control {
+      min-height: 45px;
+      border-radius: 25px;
     }
 
     .btn {
-      font-size: 15px;
+      min-height: 45px;
+      border-radius: 25px;
+      font-size: 18px;
       font-weight: bold;
+      background-color: #25c4a7;
+      border: none;
+    }
+
+    .btn:hover {
+      background-color: #1d9b7f;
     }
   </style>
 </head>
@@ -101,8 +89,8 @@ if (isset($_POST['email'])) {
 <body>
   <div class="login-form">
     <form action="" method="POST" autocomplete="off">
-      <h2 class="text-center">D.E.M.S</h2>
-      <p class="hint-text">Login Panel</p>
+      <h2 style="color: rgb(37, 196, 167); font-size:33px;">ExpenseWise</h2>
+      <p class="hint-text">Login</p>
       <div class="form-group">
         <input type="text" name="email" class="form-control" placeholder="Email" required="required">
       </div>
@@ -110,16 +98,17 @@ if (isset($_POST['email'])) {
         <input type="password" name="password" class="form-control" placeholder="Password" required="required">
       </div>
       <div class="form-group">
-        <button type="submit" class="btn btn-success btn-block" style="border-radius:0%;">Login</button>
+        <button type="submit" class="btn btn-success btn-block">Login</button>
       </div>
       <div class="clearfix">
         <label class="float-left form-check-label"><input type="checkbox"> Remember me</label>
-        
       </div>
     </form>
-    <p class="text-center">Don't have an account?<a href="register.php" class="text-danger"> Register Here</a></p>
+    <p class="text-center">Don't have an account? <a href="register.php" class="text-danger">Register Here</a></p>
+    <?php if($errormsg != "") { echo "<p class='text-center text-danger'>$errormsg</p>"; } ?>
   </div>
 </body>
+
 <!-- Bootstrap core JavaScript -->
 <script src="js/jquery.slim.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
