@@ -127,8 +127,10 @@ if (isset($_REQUEST['firstname'])) {
       <div class="form-group">
         <button type="submit" class="btn btn-success btn-block">Register</button>
       </div>
-    </form>
-    <div class="text-center">Already have an account? <a class="text-success" href="login.php">Login Here</a></div>
+      <div class="form-group">
+      <p class="text-center">Already have an account? <a href="login.php" class="text-danger">Login Here</a></p>
+      </div>
+      </form>
   </div>
 </body>
 <!-- Bootstrap core JavaScript -->

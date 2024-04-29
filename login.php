@@ -103,8 +103,11 @@ if (isset($_POST['email'])) {
       <div class="clearfix">
         <label class="float-left form-check-label"><input type="checkbox"> Remember me</label>
       </div>
+      <br>
+      <div class="form-group">
+      <p class="text-center">Don't have an account? <a href="register.php" class="text-danger">Register Here</a></p>
+      </div>
     </form>
-    <p class="text-center">Don't have an account? <a href="register.php" class="text-danger">Register Here</a></p>
     <?php if($errormsg != "") { echo "<p class='text-center text-danger'>$errormsg</p>"; } ?>
   </div>
 </body>
