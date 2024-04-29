@@ -35,9 +35,15 @@ if (isset($_POST['email'])) {
   <!-- Bootstrap core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <style>
+     body {
+      background-image: url('uploads/bkg-2.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
     .login-form {
       width: 500px;
-      margin: 50px auto;
+      margin: 120px;
       font-size: 20px;
     }
 

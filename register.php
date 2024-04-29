@@ -41,9 +41,10 @@ if (isset($_REQUEST['firstname'])) {
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
-      color: #000;
-      background: #fff;
-      font-family: 'Roboto', sans-serif;
+      background-image: url('uploads/bkg-3.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
     }
 
     .form-control {
@@ -59,7 +60,8 @@ if (isset($_REQUEST['firstname'])) {
 
     .signup-form {
       width: 500px;
-      margin: 50px auto;
+      margin-left: 1000px;
+      margin-top: 60px;
       padding: 30px;
       background: #f3f3f3;
       border-radius: 10px;
