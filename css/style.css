@@ -86,6 +86,7 @@ background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(33,99,190,0.8995973389
   font-weight: bold;
 }
 
+
 @media (min-width: 768px) {
   #sidebar-wrapper {
     margin-left: 0;
@@ -299,3 +300,4 @@ background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(33,99,190,0.8995973389
     #283048
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+

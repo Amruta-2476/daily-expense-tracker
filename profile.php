@@ -1,12 +1,14 @@
 <?php
 include("session.php");
 $exp_fetched = mysqli_query($con, "SELECT * FROM expenses WHERE user_id = '$userid'");
+$user_data = mysqli_fetch_assoc(mysqli_query($con, "SELECT * FROM users WHERE user_id = '$userid'"));
 
 if (isset($_POST['save'])) {
     $fname = $_POST['first_name'];
     $lname = $_POST['last_name'];
+    $budget = $_POST['budget']; 
 
-    $sql = "UPDATE users SET firstname = '$fname', lastname='$lname' WHERE user_id='$userid'";
+    $sql = "UPDATE users SET firstname = '$fname', lastname='$lname', budget='$budget' WHERE user_id='$userid'";
     if (mysqli_query($con, $sql)) {
         echo "Records were updated successfully.";
     } else {
@@ -15,31 +17,31 @@ if (isset($_POST['save'])) {
     header('location: profile.php');
 }
 
-if (isset($_POST['but_upload'])) {
+// if (isset($_POST['but_upload'])) {
 
-    $name = $_FILES['file']['name'];
-    $target_dir = "uploads/";
-    $target_file = $target_dir . basename($_FILES["file"]["name"]);
+//     $name = $_FILES['file']['name'];
+//     $target_dir = "uploads/";
+//     $target_file = $target_dir . basename($_FILES["file"]["name"]);
 
-    // Select file type
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+//     // Select file type
+//     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-    // Valid file extensions
-    $extensions_arr = array("jpg", "jpeg", "png", "gif");
+//     // Valid file extensions
+//     $extensions_arr = array("jpg", "jpeg", "png", "gif");
 
-    // Check extension
-    if (in_array($imageFileType, $extensions_arr)) {
+//     // Check extension
+//     if (in_array($imageFileType, $extensions_arr)) {
 
-        // Insert record
-        $query = "UPDATE users SET profile_path = '$name' WHERE user_id='$userid'";
-        mysqli_query($con, $query);
+//         // Insert record
+//         $query = "UPDATE users SET profile_path = '$name' WHERE user_id='$userid'";
+//         mysqli_query($con, $query);
 
-        // Upload file
-        move_uploaded_file($_FILES['file']['tmp_name'], $target_dir . $name);
+//         // Upload file
+//         move_uploaded_file($_FILES['file']['tmp_name'], $target_dir . $name);
 
-        header("Refresh: 0");
-    }
-}
+//         header("Refresh: 0");
+//     }
+// }
 
 ?>
 <!DOCTYPE html>
@@ -145,6 +147,16 @@ if (isset($_POST['but_upload'])) {
                                     <input type="email" class="form-control" name="email" id="email" value="<?php echo $useremail; ?>" disabled>
                                 </div>
                             </div>
+                            <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label for="budget">
+                    Budget
+                </label>
+                <input type="number" class="form-control" name="budget" id="budget" value="<?php echo $user_data['budget']; ?>" placeholder="Enter Budget">
+            </div>
+        </div>
+    </div>
                             <div class="form-group">
                                 <div class="col-md">
                                     <br>

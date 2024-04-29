@@ -1,5 +1,8 @@
 <?php
   include("session.php");
+  $budget_query = mysqli_query($con, "SELECT budget FROM users WHERE user_id = '$userid'");
+  $user_budget = mysqli_fetch_assoc($budget_query)['budget'];
+
   function getDashboardExpense($type) {
     global $con, $userid;
     $today = date('Y-m-d');
@@ -73,7 +76,6 @@
       text-decoration: dotted;
     }
   </style>
-
 </head>
 
 <body>
@@ -101,8 +103,6 @@
     <div id="page-content-wrapper">
 
       <nav class="navbar navbar-expand-lg navbar-light  border-bottom">
-
-
         <button class="toggler" type="button" id="menu-toggle" aria-expanded="false">
           <span data-feather="menu"></span>
         </button>
@@ -184,39 +184,28 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-					              </div>
-					          </div>
-          </div>
+                                </div> <!-- Closing tag for "report-card" div -->
+                            </div> 
+                        </div> 
+                    </div>
+        </div> 
 
-         <!-- User input for budget/income -->
-          <!-- <div class="container-fluid">
-              <div class="row justify-content-center">
-                  <div class="col-md-6">
-                      <div class="card">
-                          <div class="card-header">
-                              <h5 class="card-title">Enter Your Budget/Income</h5>
-                          </div>
-                          <div class="card-body">
-                              <form method="post">
-                                  <div class="form-group">
-                                      <input type="text" class="form-control" id="budget" name="budget" placeholder="Enter your budget or income">
-                                  </div>
-                                  <button type="submit" class="btn btn-primary">Submit</button>
-                              </form>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div> -->
-
+        <br>
+        <div style="display: flex; justify-content: center;">
+           <div style="display:inline-block; border:1px solid black; padding-left:13px; padding-right:13px; padding-top:13px; border-radius:10px; box-shadow: 0px 0px 10px rgba(0,0,0,0.5);">
+              <p style="font-size:18px; font-weight:bold;">If you haven't set your monthly budget yet, <a href="profile.php">click here</a>.</p>
+            </div>
+        </div>
+        <br>
         <div class="container-fluid">
         <div class="row justify-content-center">
             <!-- Expense by Month graph -->
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
-                        <h5 class="card-title">Expense by Month</h5>
+                    <h5 class="card-title" style="display: inline;">Expense by Month | </h5>
+                <!-- Display user's budget -->
+                <span style="display: inline; font-size:19px; color:red; font-weight:600">Monthly Budget: <?php echo $user_budget; ?></span>
                     </div>
                     <div class="card-body">
                         <canvas id="expense_line" height="130"></canvas>
@@ -258,7 +247,12 @@
   <script>
     feather.replace()
   </script>
+
+<input type="hidden" id="user-budget" value="<?php echo $user_budget; ?>">
   <script>
+     // Get the user's budget from the hidden input field
+     var userBudget = parseFloat(document.getElementById('user-budget').value);
+
     var ctx = document.getElementById('expense_category_pie').getContext('2d');
     var myChart = new Chart(ctx, {
       type: 'bar',
@@ -315,8 +309,28 @@
             '#6610f2'
           ],
           fill: false,
-          borderWidth: 2
+          borderWidth: 2,
+          pointRadius: 6
         }]
+      },
+      options: {
+        plugins: {
+          annotation: {
+            annotations: [{
+              type: 'line',
+              mode: 'horizontal',
+              scaleID: 'y-axis-0',
+              value: userBudget,
+              borderColor: 'red',
+              borderWidth: 2,
+              label: {
+                enabled: true,
+                content: 'User Budget',
+                position: 'right'
+              }
+            }]
+          }
+        }
       }
     });
   </script>
