@@ -40,6 +40,7 @@ $exp_fetched = mysqli_query($con, "SELECT * FROM expenses WHERE user_id = '$user
             <a href="index.php" class="list-group-item list-group-item-action sidebar-active"><span data-feather="home"></span> Dashboard</a>
             <a href="add_expense.php" class="list-group-item list-group-item-action "><span data-feather="plus-square"></span> Add Expenses</a>
             <a href="manage_expense.php" class="list-group-item list-group-item-action "><span data-feather="dollar-sign"></span> Manage Expenses</a>
+                <a href="split_expense.php" class="list-group-item list-group-item-action "><span data-feather="divide"></span> Split expense</a>
             <a href="profile.php" class="list-group-item list-group-item-action "><span data-feather="user"></span> Profile</a>
             <a href="logout.php" class="list-group-item list-group-item-action "><span data-feather="power"></span> Logout</a>
         </div>

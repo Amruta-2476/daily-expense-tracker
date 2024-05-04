@@ -47,7 +47,20 @@ CREATE TABLE `users` (
   `email` varchar(50) NOT NULL,
   `profile_path` varchar(50) NOT NULL DEFAULT 'default_profile.png',
   `password` varchar(50) NOT NULL,
-  `trn_date` datetime NOT NULL
+  `trn_date` datetime NOT NULL,
+  `budget` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- Table structure for table `expense_splits`
+CREATE TABLE `expense_splits` (
+  `split_id` int(11) NOT NULL AUTO_INCREMENT,
+  `expense_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `split_amount` decimal(10,2) NOT NULL,
+  `num_users` int(11) NOT NULL,
+  PRIMARY KEY (`split_id`),
+  FOREIGN KEY (`expense_id`) REFERENCES `expenses`(`expense_id`),
+  FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
