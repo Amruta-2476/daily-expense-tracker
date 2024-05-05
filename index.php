@@ -67,7 +67,7 @@
   <script src="js/feather.min.js"></script>
 </head>
 
-<body>
+<body style= "background-color: linear-gradient(47deg, #3D3B3C -0.05%, #847E7E 72.63%, #857F7F 88.64%);">
 
   <div class="d-flex" id="wrapper">
 
