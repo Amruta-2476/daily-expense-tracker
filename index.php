@@ -65,17 +65,6 @@
 
   <!-- Feather JS for Icons -->
   <script src="js/feather.min.js"></script>
-  <style>
-    .card a {
-      color: #000;
-      font-weight: 500;
-    }
-
-    .card a:hover {
-      color: #28a745;
-      text-decoration: dotted;
-    }
-  </style>
 </head>
 
 <body>
