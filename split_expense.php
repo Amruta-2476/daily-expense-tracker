@@ -136,7 +136,13 @@ if (isset($_POST['submit'])) {
                         // After the code where you insert expense splits into the database
 
                         // Query the database to get the splits for the current user
-                        $query = "SELECT es.split_id, us.firstname, us.lastname, es.split_amount, es.amount_per_user FROM expense_splits es INNER JOIN users us ON es.user_id = us.user_id WHERE es.created_by = '$userid'";
+                        $query = "SELECT es.split_id, oweUser.firstname as owe_firstname, oweUser.lastname as owe_lastname, 
+                                createUser.firstname as create_firstname, createUser.lastname as create_lastname, 
+                                es.split_amount, es.amount_per_user, es.created_by 
+                                FROM expense_splits es 
+                                INNER JOIN users oweUser ON es.user_id = oweUser.user_id 
+                                INNER JOIN users createUser ON es.created_by = createUser.user_id 
+                                WHERE es.created_by = '$userid' OR es.user_id = '$userid'";
                         $result = mysqli_query($con, $query);
 
                         if ($result && mysqli_num_rows($result) > 0) {
@@ -145,7 +151,15 @@ if (isset($_POST['submit'])) {
                                 $oweAmount = $row['amount_per_user'];
                                 ?>
                                 <div class="split-entry">
-                                    <p>User <?php echo $row['firstname'] . " " . $row['lastname'] ?> owes $<?php echo $oweAmount ?> to you. <a href='delete_split_expense.php?split_id=<?php echo $row['split_id'] ?>'>Delete</a></p>
+                                    <?php
+                                    if ($row['created_by'] == $userid) {
+                                        // If the logged-in user created this expense split, they are owed money
+                                        echo "<p class='owe-money'>User " . $row['owe_firstname'] . " " . $row['owe_lastname'] . " owes you $" . $oweAmount . " . <a href='delete_split_expense.php?split_id=" . $row['split_id'] . "'>Delete</a></p>";
+                                    } else {
+                                        // If the logged-in user did not create this expense split, they owe money
+                                        echo "<p class='you-owe-money'>You owe user " . $row['create_firstname'] . " " . $row['create_lastname'] . " $" . abs($oweAmount) . " . <a href='delete_split_expense.php?split_id=" . $row['split_id'] . "'>Delete</a></p>";
+                                    }
+                                    ?>
                                 </div>
                                 <?php
                             }
