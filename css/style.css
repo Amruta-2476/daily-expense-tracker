@@ -17,7 +17,7 @@
   color: #ffffff;
 }
 .list-group-item:hover {
-  background: #49d0b7;
+  background: #61b4a5;
   color: #ffffff;
 }
 .user {
@@ -29,8 +29,8 @@
   padding: 10px;
 }
 .toggler {
-  color: #000;
-  background-color: linear-gradient(47deg, #3D3B3C -0.05%, #847E7E 72.63%, #857F7F 88.64%);
+  color: white;
+  background: linear-gradient(47deg, #363636 -0.05%, #000000 72.63%, #000000 88.64%);
   border: none;
   outline: none;
 }
