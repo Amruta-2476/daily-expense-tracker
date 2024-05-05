@@ -309,7 +309,7 @@
 
 .split-entry {
   border-radius: 5px;
-  text-align: center;
+  /* text-align: center; */
   padding-top: 6px;
   padding-left: 6px;
   padding-right: 6px;
@@ -321,6 +321,7 @@
 }
 .split-entry a{
   color: blue;
+  text-decoration: underline;
 }
 .owe-money{
   /* border: 3px solid rgb(4, 163, 4); */
@@ -329,4 +330,21 @@
 .you-owe-money{
   /* border: 3px solid rgb(163, 4, 4); */
   color: rgb(163, 4, 4);
+}
+
+.sumbit-split{
+  background: green;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#calculate{
+  width: 100%;
 }

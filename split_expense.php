@@ -120,10 +120,10 @@ if (isset($_POST['submit'])) {
                                         <label for="amount_per_user">Amount for Each:</label>
                                         <input type="text" class="form-control" id="amount_per_user" name="amount_per_user" value="<?php echo $amount_per_user; ?>" readonly>
                                     </div>
-                                    <button type="button" class="btn btn-primary" onclick="calculateAmountPerUser()">Calculate</button>
+                                    <button type="button" class="btn btn-primary" id="calculate" onclick="calculateAmountPerUser()">Calculate</button>
                                     <br>
                                     <br>
-                                    <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                                    <button type="submit" class="sumbit-split" name="submit">Submit</button>
                                 </form>
                             </div>
                         </div>
