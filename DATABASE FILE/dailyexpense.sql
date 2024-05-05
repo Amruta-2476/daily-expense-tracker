@@ -58,6 +58,8 @@ CREATE TABLE `expense_splits` (
   `user_id` int(11) NOT NULL,
   `split_amount` decimal(10,2) NOT NULL,
   `num_users` int(11) NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `amount_per_user` decimal(10,2) NOT NULL,
   PRIMARY KEY (`split_id`),
   FOREIGN KEY (`expense_id`) REFERENCES `expenses`(`expense_id`),
   FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`)
