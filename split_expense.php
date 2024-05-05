@@ -88,46 +88,76 @@ if (isset($_POST['submit'])) {
             </nav>
 
             <div class="container">
-                <h3 class="mt-4 text-center">Split Expense</h3>
-                <hr>
                 <div class="row">
-                    <div class="col-md-6 offset-md-3">
-                        <form action="" method="POST" id="expense_form">
-                            <div class="form-group">
-                                <label for="num_users">Enter Number of Users:</label>
-                                <input type="number" class="form-control" id="num_users" name="num_users" required>
+                    <!-- Left side: Create Split Expense -->
+                    <div class="col-md-9">
+                        <h4 class="mt-4 text-center">Create Split Expense</h4>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6 offset-md-3">
+                                <form action="" method="POST" id="expense_form">
+                                    <div class="form-group">
+                                        <label for="num_users">Enter Number of Users:</label>
+                                        <input type="number" class="form-control" id="num_users" name="num_users" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="split_amount">Enter Total Amount($):</label>
+                                        <input type="number" class="form-control" id="split_amount" name="split_amount" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="users">Select Users:</label>
+                                        <select class="form-control" id="users" name="users[]" multiple required>
+                                            <?php
+                                            $query = "SELECT * FROM users";
+                                            $result = mysqli_query($con, $query);
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                echo "<option value='" . $row['user_id'] . "'>" . $row['firstname'] . "</option>";
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="amount_per_user">Amount for Each:</label>
+                                        <input type="text" class="form-control" id="amount_per_user" name="amount_per_user" value="<?php echo $amount_per_user; ?>" readonly>
+                                    </div>
+                                    <button type="button" class="btn btn-primary" onclick="calculateAmountPerUser()">Calculate</button>
+                                    <br>
+                                    <br>
+                                    <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                                </form>
                             </div>
-                            <div class="form-group">
-                                <label for="split_amount">Enter Total Amount($):</label>
-                                <input type="number" class="form-control" id="split_amount" name="split_amount" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="users">Select Users:</label>
-                                <select class="form-control" id="users" name="users[]" multiple required>
-                                    <?php
-                                    $query = "SELECT * FROM users";
-                                    $result = mysqli_query($con, $query);
-                                    while ($row = mysqli_fetch_assoc($result)) {
-                                        echo "<option value='" . $row['user_id'] . "'>" . $row['firstname'] . "</option>";
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="amount_per_user">Amount for Each:</label>
-                                <input type="text" class="form-control" id="amount_per_user" name="amount_per_user" value="<?php echo $amount_per_user; ?>" readonly>
-                            </div>
-                            <button type="button" class="btn btn-primary" onclick="calculateAmountPerUser()">Calculate</button>
-                            <hr>
-        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
-                        </form>
+                        </div>
+                    </div>
+                    <!-- Right side: Split expense history -->
+                    <div class="col-md-3">
+                        <h4 class="mt-4 text-center">Split expense history</h4>
+                        <hr>
+                        <?php
+                        // After the code where you insert expense splits into the database
+
+                        // Query the database to get the splits for the current user
+                        $query = "SELECT es.split_id, us.firstname, us.lastname, es.split_amount, es.amount_per_user FROM expense_splits es INNER JOIN users us ON es.user_id = us.user_id WHERE es.created_by = '$userid'";
+                        $result = mysqli_query($con, $query);
+
+                        if ($result && mysqli_num_rows($result) > 0) {
+                            echo "<ul>";
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $oweAmount = $row['amount_per_user'];
+                                ?>
+                                <div class="split-entry">
+                                    <p>User <?php echo $row['firstname'] . " " . $row['lastname'] ?> owes $<?php echo $oweAmount ?> to you. <a href='delete_split_expense.php?split_id=<?php echo $row['split_id'] ?>'>Delete</a></p>
+                                </div>
+                                <?php
+                            }
+                        } else {
+                            echo "<p>No splits found.</p>";
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
+           <!-- /#page-content-wrapper -->
         </div>
-        <!-- /#page-content-wrapper -->
-
-    </div>
     <!-- /#wrapper -->
 
     <!-- Bootstrap core JavaScript -->
