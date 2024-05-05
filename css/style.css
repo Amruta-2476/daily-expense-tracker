@@ -1,5 +1,4 @@
 body {
-  background-color: linear-gradient(47deg, #3D3B3C -0.05%, #847E7E 72.63%, #857F7F 88.64%);
 }
 .feather {
   width: 20px;
@@ -17,7 +16,9 @@ body {
 .list-group-item {
   border: none;
 }
-
+#page-content-wrapper {
+  background-color:linear-gradient(47deg, #3D3B3C -0.05%, #847E7E 72.63%, #857F7F 88.64%);
+}
 .user {
   text-align: center;
   border-bottom: 1px solid #ddd;
