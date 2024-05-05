@@ -1,0 +1,249 @@
+/* -------------------------------------Fonts------------------------------------- */
+@font-face {
+    font-family: Montserrat-Light;
+    src: url(fonts/Montserrat/Montserrat-Light.ttf);
+}
+
+@font-face {
+    font-family: Montserrat-Regular;
+    src: url(fonts/Montserrat/Montserrat-Regular.ttf);
+}
+
+@font-face {
+    font-family: Montserrat-Medium;
+    src: url(fonts/Montserrat/Montserrat-Medium.ttf);
+}
+
+@font-face {
+    font-family: Montserrat-SemiBold;
+    src: url(fonts/Montserrat/Montserrat-SemiBold.ttf);
+}
+
+@font-face {
+    font-family: Open-Sans-SemiBold;
+    src: url(fonts/Open-Sans/OpenSans-SemiBold.ttf);
+}
+
+@font-face {
+    font-family: Montserrat-Bold;
+    src: url(fonts/Montserrat/Montserrat-Bold.ttf);
+}
+
+@font-face {
+    font-family: Montserrat-ExtraBold;
+    src: url(fonts/Montserrat/Montserrat-ExtraBold.ttf);
+}
+
+@font-face {
+    font-family: Poppins-SemiBold;
+    src: url(fonts/Poppins/Poppins-SemiBold.ttf);
+}
+
+@font-face {
+    font-family: Quicksand-Bold;
+    src: url(fonts/Quicksand/Quicksand-Bold.ttf);
+}
+
+@font-face {
+    font-family: Lekton-Bold;
+    src: url(fonts/Lekton/Lekton-Bold.ttf);
+}
+
+.sec1{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:998px;
+    overflow: hidden;
+}
+.sec1 .coin{
+    top:3px;
+    position: absolute;
+    left:50%;
+    transform: translateX(-50%);
+}
+.sec1 .eli1{
+    width: 535px;
+    height: 517.993px;
+    flex-shrink: 0;
+    position: absolute;
+    top:807px;
+    right:-221px;
+    border-radius: 535px;
+    background: #2AB572;
+}
+.sec1 .eli2{
+    width: 535px;
+    height: 517.993px;
+    flex-shrink: 0;
+    position: absolute;
+    top:253px;
+    left:-118px;
+    border-radius: 535px;
+    background: #C8D80C;
+}
+.sec1 .background-rec{
+    width: 100%;
+    height:998px;
+    position: absolute;
+    top:0;
+    left:0;
+    background: rgba(255, 255, 255, 0.50);
+    backdrop-filter: blur(50px);
+}
+.sec1 .nav-rec{
+    width: 100%;
+    height: 85px;
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.50);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(25px);
+    position: absolute;
+    top:0;
+    left:0;
+}
+.sec1 .exptracker-txt{
+    color: #000;
+    font-family: "Montserrat-ExtraBold", Helvetica;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;   
+    position: absolute;
+    top:65px;
+    left:50%;
+    transform: translateX(-50%);
+}
+.sec1 .atm-icon{
+    top:86px;
+    right:28px;
+    width: 734.034px;
+    height: 734.034px;
+    flex-shrink: 0;  
+    position: absolute; 
+}
+.sec1 .atm{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    left:0;
+}
+.sec1 .circle1{
+    top:167px;
+    right:105px;
+    width: 456px;
+    height: 456px;
+    flex-shrink: 0;
+    position: absolute;
+    border-radius: 456px;
+    background: #023341;
+}
+.sec1 .circle2{
+    top:157px;
+    right:95px;
+    width: 476px;
+    height: 476px;
+    flex-shrink: 0;
+    position: absolute;
+    border-radius: 476px;
+    border: 2px solid #02303D;
+}
+.sec1 .headertxt{
+    color: #000;
+    font-family: "Montserrat-SemiBold", Helvetica;
+    font-size: 96px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    position:absolute;
+    top:242px;
+    left:125px;
+    width:698px;
+}
+.sec1 .subhead{
+    display: inline-flex;
+    align-items: center;
+    gap: 21px;
+    position: absolute;
+    top:719px;
+    left:125px;
+}
+.sec1 .track, .sec1 .analyse, .sec1 .thrive{
+    color: #000;
+    font-family: "Montserrat-ExtraBold", Helvetica;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    text-transform: uppercase;
+    position: relative;
+    top:0;
+}
+.sec1 .track{
+    position: relative;
+    order:1;
+}
+.sec1 .star1{
+    position: relative;
+    order:2;
+}
+.sec1 .analyse{
+    position: relative;
+    order:3;
+}
+.sec1 .star2{
+    position: relative;
+    order:4;
+}
+.sec1 .thrive{
+    position: relative;
+    order:5;
+}
+.sec1 .button{
+    top:796px;
+    left:50%;
+    transform: translateX(-50%);
+    position: absolute;
+    width: 169px;
+    height: 63px;
+    flex-shrink: 0;   
+}
+.sec1 .btnbox{
+    position: absolute;
+    left:0;
+    top:0;
+    width: 169px;
+    height: 63px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    border: 3px solid #000;
+    background: transparent;
+    transition:all ease-in-out 300ms;
+}
+.sec1 .btntxt{
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    color: #000;
+    font-family: "Montserrat-ExtraBold", Helvetica;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    text-transform: uppercase;
+    position: absolute;
+    width: 109px;
+    height: 18px;
+    text-wrap: nowrap;
+    transition:all ease-in-out 300ms;
+}
+.sec1 .button:hover .btnbox {
+    background: #000;
+}
+
+.sec1 .button:hover .btntxt {
+    color: #ffffff;
+}
+

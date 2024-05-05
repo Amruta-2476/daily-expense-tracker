@@ -1,5 +1,5 @@
 body {
-  background-color: #efefef;
+  background-color: linear-gradient(47deg, #3D3B3C -0.05%, #847E7E 72.63%, #857F7F 88.64%);
 }
 .feather {
   width: 20px;
@@ -27,7 +27,7 @@ body {
 }
 .toggler {
   color: #000;
-  background-color: #fff;
+  background-color: linear-gradient(47deg, #3D3B3C -0.05%, #847E7E 72.63%, #857F7F 88.64%);
   border: none;
   outline: none;
 }
@@ -42,7 +42,7 @@ body {
 
 #wrapper {
   overflow-x: hidden;
-  background-color: #fff;
+  background-color:linear-gradient(47deg, #3D3B3C -0.05%, #847E7E 72.63%, #857F7F 88.64%);
 }
 
 #sidebar-wrapper {
@@ -77,11 +77,10 @@ body {
   position:relative;
   width:400px;
   padding:15px;
-  border: 2px solid black;
+  /* border: 1px solid black; */
   border-radius: 10px; 
   margin: 7px; 
-  background: rgb(158, 243, 158);
-background: linear-gradient(90deg, rgba(243,158,195,1) 3%, rgba(142,183,232,1) 100%);
+  background: linear-gradient(90deg, #03448C 0%,  #17FFC6 100%);
   color: white;
   font-weight: bold;
 }
