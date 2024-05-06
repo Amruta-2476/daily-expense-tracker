@@ -94,7 +94,7 @@ if (isset($_POST['email'])) {
 
 <body>
   <div class="login-form">
-    <form action="" method="POST" autocomplete="off">
+    <form action="" method="POST">
       <h2 style="color: rgb(37, 196, 167); font-size:33px;">ExpenseWise</h2>
       <p class="hint-text">Login</p>
       <div class="form-group">

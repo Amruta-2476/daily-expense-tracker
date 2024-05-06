@@ -118,7 +118,7 @@ if (isset($_POST['save'])) {
 
 
                         
-                        <form class="form" action="" method="post" id="registrationForm" autocomplete="off">
+                        <form class="form" action="" method="post" id="registrationForm">
                             <div class="row">
                                 <div class="col">
                                     <div class="form-group">

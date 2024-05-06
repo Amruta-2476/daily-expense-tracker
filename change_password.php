@@ -66,7 +66,7 @@ $exp_fetched = mysqli_query($con, "SELECT * FROM expenses WHERE user_id = '$user
                 <h5>Hi <?php echo $firstname ?>! You can change your password here</h5>
                 <div class="row mt-3">
                     <div class="col-md">
-                        <form class="form" action="" method="post" id="registrationForm" autocomplete="off">
+                        <form class="form" action="" method="post" id="registrationForm">
                             <div class="form-group">
                                 <div class="col">
                                     <label for="password">
