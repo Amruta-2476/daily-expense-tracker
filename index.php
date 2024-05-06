@@ -73,6 +73,10 @@
 
     <!-- Sidebar -->
     <div class="border-right" id="sidebar-wrapper">
+       <div class="website-name">
+            <p>ExpenseWise</p>
+        </div>
+        <hr >
       <div class="user">
         <img class="img img-fluid rounded-circle" src="<?php echo $userprofile ?>" width="120">
         <h5><?php echo $username ?></h5>

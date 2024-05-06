@@ -7,12 +7,23 @@ $to = isset($_GET['to']) ? $_GET['to'] : '';
 
 $fromDate = new DateTime($from);
 $toDate = new DateTime($to);
+$today = new DateTime();
+$yesterday = new DateTime('yesterday');
 
-if ($fromDate->format('Y-m') == $toDate->format('Y-m')) {
+if ($from == $to) {
+    // Check if it's today's report
+    if ($from == $today->format('Y-m-d')) {
+        $title = "Report for " . $today->format('Y-m-d');
+    } elseif ($from == $yesterday->format('Y-m-d')) { // Check if it's yesterday's report
+        $title = "Report for " . $yesterday->format('Y-m-d');
+    } else {
+        $title = "Report for " . $fromDate->format('Y-m-d');
+    }
+} elseif ($fromDate->format('Y-m') == $toDate->format('Y-m')) {
     // Same month
     $title = "Monthly Report for " . $fromDate->format('F Y');
 } else {
-    // Different months
+    // Different months or specific range
     $title = "Report for " . $fromDate->format('F Y') . " to " . $toDate->format('F Y');
 }
 
@@ -23,7 +34,8 @@ $res = mysqli_query($con, "SELECT expensedate, expense, expensecategory FROM exp
 if(mysqli_num_rows($res) > 0) {
     // Calculate total expense
     $totalExpense = 0;
-    ?>
+    // HTML structure remains the same as provided
+?>
 
     <!DOCTYPE html>
     <html lang="en">
@@ -39,37 +51,71 @@ if(mysqli_num_rows($res) > 0) {
         <link href="css/style.css" rel="stylesheet">
     </head>
     <body>
-        <div class="container mt-4">
-            <div class="mt-4 text-center" >
-            <?php
-        echo "<h1 style='color: blue; font-size: 30px; margin:7px'>" . $title . "</h1>";
-        ?>
+        
+    <div class="d-flex" id="wrapper">
+
+        <!-- Sidebar -->
+        <div class="border-right" id="sidebar-wrapper">
+        <div class="website-name">
+            ExpenseWise
+        </div>
+        <hr >
+            <div class="user">
+                <img class="img img-fluid rounded-circle" src="<?php echo $userprofile ?>" width="120">
+                <h5><?php echo $username ?></h5>
+                <p><?php echo $useremail ?></p>
+                </div>
+                <div class="list-group list-group-flush">
+                <a href="index.php" class="list-group-item list-group-item-action sidebar-active"><span data-feather="home"></span> Dashboard</a>
+                <a href="add_expense.php" class="list-group-item list-group-item-action "><span data-feather="plus-square"></span> Add Expenses</a>
+                <a href="manage_expense.php" class="list-group-item list-group-item-action "><span data-feather="dollar-sign"></span> Manage Expenses</a>
+                    <a href="split_expense.php" class="list-group-item list-group-item-action "><span data-feather="divide"></span> Split expense</a>
+                <a href="profile.php" class="list-group-item list-group-item-action "><span data-feather="user"></span> Profile</a>
+                <a href="logout.php" class="list-group-item list-group-item-action "><span data-feather="power"></span> Logout</a>
             </div>
-            <div class="row justify-content-center">
-                <table class="table table-hover table-bordered">
+        </div>
+            <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+
+            <nav class="navbar navbar-expand-lg navbar-light  border-bottom">
+
+
+                <button class="toggler" type="button" id="menu-toggle" aria-expanded="false">
+                    <span data-feather="menu"></span>
+                </button>
+            </nav>
+
+            <div class="container-fluid">
+                <h1 class="mt-4"><?php echo $title ?></h1>
+                <table class="table table-bordered mt-4">
                     <thead>
-                        <tr class="text-center">
+                        <tr>
                             <th>Date</th>
-                            <th>Amount</th>
-                            <th>Expense Category</th>
+                            <th>Expense</th>
+                            <th>Category</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        while($row = mysqli_fetch_assoc($res)) {
-                            echo "<tr>";
-                            echo "<td>" . $row['expensedate'] . "</td>";
-                            echo "<td>$" . $row['expense'] . "</td>";
-                            echo "<td>" . $row['expensecategory'] . "</td>";
-                            echo "</tr>";
+                        while($row = mysqli_fetch_array($res)) {
                             $totalExpense += $row['expense'];
+                            ?>
+                            <tr>
+                                <td><?php echo $row['expensedate'] ?></td>
+                                <td><?php echo $row['expense'] ?></td>
+                                <td><?php echo $row['expensecategory'] ?></td>
+                            </tr>
+                            <?php
                         }
                         ?>
                     </tbody>
                 </table>
+                <div class="alert alert-info">Total Expense: <?php echo $totalExpense ?></div>
             </div>
-            <div class="text-right" style="font-size: 30px;"><strong>Total Expense:</strong> $<?php echo $totalExpense; ?></div>
         </div>
+    </div>
+
     </body>
     </html>
 

@@ -34,14 +34,14 @@
   border: none;
   outline: none;
 }
-.sidebar-active {
+/* .sidebar-active {
   color: #49d0b7;
   font-weight: 500;
 }
 .sidebar-active .feather {
   stroke: #49d0b7;
   font-weight: 500;
-}
+} */
 
 #wrapper {
   overflow-x: hidden;
@@ -347,4 +347,14 @@
 }
 #calculate{
   width: 100%;
+}
+.website-name{
+  font-weight:bolder;
+  color: #fff0b8;
+  text-align: center;
+  font-size: 39px;
+  font-style: italic;
+  font-family:serif;
+  margin: 10px;
+  text-shadow: 5px 5px 25px rgb(250, 250, 164);
 }
